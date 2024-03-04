@@ -38,3 +38,25 @@ let playGame = (userInput) => {
 // in this case we are listening for the 'data' event which occurs when the user enters input
 // when the 'data' event occurs, we run the playGame function
 process.stdin.on('data', playGame);
+
+
+// error handling
+
+// the error module is within the global object
+
+// many async use error first callbacks, meaning that the first argument of the
+// callback function is an error object, and the second is the data
+
+// ex.
+const errorFirstCallback = (err, data) => {
+  if (err) {
+    console.log(`There WAS an error: ${err}`);
+  } else {
+    // err was falsy
+    console.log(`There was NO error. Event data: ${data}`);
+  }
+};
+
+// error-first callbacks are a standard way of handling errors in Node.js
+// if an error occurs, the first argument of the callback will be an Error object
+// if an error does not occur, the first argument will be null
