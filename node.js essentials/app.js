@@ -60,3 +60,22 @@ const errorFirstCallback = (err, data) => {
 // error-first callbacks are a standard way of handling errors in Node.js
 // if an error occurs, the first argument of the callback will be an Error object
 // if an error does not occur, the first argument will be null
+
+// buffer module
+
+// the buffer module is within the global object and is used to handle binary data
+
+// Allocate buffer of size 15 filled with 'b'
+// .alloc is a method that creates a buffer of a specified size and fills it with a specified value
+const bufferAlloc = Buffer.alloc(15, 'b');
+
+// Create buffer1 with 'hello' and buffer2 with 'world'
+// .from is a method that creates a buffer from a string
+const buffer1 = Buffer.from('hello');
+const buffer2 = Buffer.from('world');
+
+// Create a variable named bufferArray and set it equal to an array that contains buffer1 and buffer2.
+// Then, pass bufferArray to the .concat() method to combine the two buffers into a new Buffer object.
+// Save the result to a const variable named bufferConcat.
+const bufferArray = [buffer1, buffer2];
+const bufferConcat = Buffer.concat(bufferArray);
