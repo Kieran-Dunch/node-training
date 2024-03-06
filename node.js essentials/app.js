@@ -79,3 +79,22 @@ const buffer2 = Buffer.from('world');
 // Save the result to a const variable named bufferConcat.
 const bufferArray = [buffer1, buffer2];
 const bufferConcat = Buffer.concat(bufferArray);
+
+
+// The FS module
+// The fs module is a built-in module that provides a way to interact with the file system
+// it includes such methods like readFileSync, readFile, writeFile, and unlink
+// readFile and writeFile use error-first callbacks
+// Example:
+
+const fs = require('fs');
+const readFileCallback = (err, data) => {
+  if (err) {
+    console.log('error')
+  } else {
+    console.log(data)
+  }
+}
+
+// read file takes three arguments: the file to read, the encoding of the file, and the callback function
+fs.readFile('finalFile.txt', 'utf-8', readFileCallback)
