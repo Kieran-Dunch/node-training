@@ -105,8 +105,31 @@ fs.readFile('finalFile.txt', 'utf-8', readFileCallback)
 const readline = require('readline');
 const fs = require('fs');
 
+// create the interface, which takes an object with a property of input and a value of a readable stream
 const myInterface = readline.createInterface({ input: fs.createReadStream('text.txt') });
 
+// create the callback
 const printData = (data) => {
   console.log(`Item: ${data}`);
 }
+
+// a line event will occur when a new line is read from the stream
+// when the line event occurs, the printData function will run
+myInterface.on('line', printData);
+
+
+// We can also write to streams as well!
+// create a writable stream with an output.txt file
+const fileStream = fs.createWriteStream('shoppingResults.txt');
+
+// create a callback function that will write to the file
+let transformData = (line) => {
+  fileStream.write(`They were out of: ${line}\n`);
+};
+
+// when the line event occurs, the transformData function will run
+myInterface.on('line', transformData);
+
+// This will write to the output file file each time a line event occurs
+// we can end the stream when we are done writing to it
+fileStream.end();
