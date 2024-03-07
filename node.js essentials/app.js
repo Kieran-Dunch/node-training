@@ -98,3 +98,15 @@ const readFileCallback = (err, data) => {
 
 // read file takes three arguments: the file to read, the encoding of the file, and the callback function
 fs.readFile('finalFile.txt', 'utf-8', readFileCallback)
+
+//  the readline module
+// The readline module is a built-in module that provides a way to read data from a Readable stream one line at a time
+
+const readline = require('readline');
+const fs = require('fs');
+
+const myInterface = readline.createInterface({ input: fs.createReadStream('text.txt') });
+
+const printData = (data) => {
+  console.log(`Item: ${data}`);
+}
