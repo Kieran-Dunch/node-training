@@ -133,3 +133,15 @@ myInterface.on('line', transformData);
 // This will write to the output file file each time a line event occurs
 // we can end the stream when we are done writing to it
 fileStream.end();
+
+// the Timer module
+// The Timer module is a built-in module that provides a way to execute a function after a given number of milliseconds
+
+// setImmediate  is a method that is used to execute a function immediately after the current event loop
+// setTimeout is a method that is used to execute a function after a specified number of milliseconds
+// setInterval is a method that is used to execute a function at a specified interval
+
+// Example:
+setImmediate(() => {
+  console.log('I got called right away!');
+});
