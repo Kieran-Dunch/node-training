@@ -27,6 +27,9 @@ describe('User visits root', () => {
       browser.setValue('textarea[id=message]', message);
       // submit the form
       browser.click('input[type=submit]');
+
+      assert.include(browser.getText('#messages'), message);
+      assert.include(browser.getText('#messages'), author);
     });
   });
 });
