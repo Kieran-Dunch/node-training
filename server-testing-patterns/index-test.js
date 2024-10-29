@@ -1,7 +1,17 @@
 const { assert } = require('chai');
 const request = require('supertest');
+const { jsdom } = require('jsdom');
 
 const app = require('../../app');
+
+const parseTextFromHTML = (htmlAsString, selector) => {
+  const selectedElement = jsdom(htmlAsString).querySelector(selector);
+  if (selectedElement !== null) {
+    return selectedElement.textContent;
+  } else {
+    throw new Error(`No element with selector ${selector} found in HTML string`);
+  }
+};
 
 describe('root page', () => {
   describe('GET request', () => {
@@ -9,6 +19,13 @@ describe('root page', () => {
       const response = await request(app).
         get('/');
       assert.equal(response.status, 200);
+    });
+
+    it('contains the correct title', async () => {
+      const response = await request(app).
+        get('/');
+
+      assert.equal(parseTextFromHTML(response.text, '#page-title'), 'Messaging App');
     });
   });
 });
