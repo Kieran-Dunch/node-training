@@ -8,7 +8,7 @@ describe('root page', () => {
     it('returns a 200 status', async () => {
       const response = await request(app).
         get('/');
-
+      assert.equal(response.status, 200);
     });
   });
 });
